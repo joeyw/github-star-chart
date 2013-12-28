@@ -59,7 +59,6 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.2)
     multipart-post (1.2.0)
-    mysql2 (0.3.14)
     octokit (2.7.0)
       sawyer (~> 0.5.2)
     polyglot (0.3.3)
@@ -137,7 +136,6 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   multi_json
-  mysql2
   octokit
   rails (= 4.0.2)
   rspec
