@@ -1,3 +1,5 @@
+require 'octokit'
+
 class StarCharter
   class << self
 
