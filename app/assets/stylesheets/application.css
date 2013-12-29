@@ -11,3 +11,16 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+  font-family: monospace;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
