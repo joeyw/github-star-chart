@@ -29,11 +29,3 @@ describe ".combine_starred" do
   end
 end
 
-describe ".fetch_user", :vcr do
-  it "fetches a user and their starred repos" do
-    user = StarCharter.fetch_user('api-padawan')
-    expect(user[:login]).to eq('api-padawan')
-    expect(user[:starred].first.full_name).to eq('octokit/octokit.rb')
-  end
-end
-
