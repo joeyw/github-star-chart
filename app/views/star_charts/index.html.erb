@@ -1,0 +1,28 @@
+<div style="display: inline-block; vertical-align: top; margin: 0 20px;">
+  <h3><%= @users.collect { |user| user[:login] }.join(' & ') %> both star:</h3>
+  <ul>
+  <% @combined.each do |starred|  %>
+    <li><%= starred.first %></li>
+  <% end %>
+  </ul>
+</div>
+
+<div style="display: inline-block; vertical-align: top;">
+  <% @pengwynn = @users.select { |u| u[:login] == 'pengwynn' }.first %>
+  <h3>only <%= @pengwynn[:login] %> stars</h3>
+  <ul>
+  <% @pengwynn[:starred].each do |starred|  %>
+    <li><%= starred[:full_name] %></li>
+  <% end %>
+  </ul> 
+</div>
+
+<div style="display: inline-block; vertical-align: top;">
+  <% @joeyw = @users.select { |u| u[:login] == 'joeyw' }.first %>
+  <h3>only <%= @joeyw[:login] %> stars</h3>
+  <ul>
+  <% @joeyw[:starred].each do |starred|  %>
+    <li><%= starred[:full_name] %></li>
+  <% end %>
+  </ul> 
+</div>

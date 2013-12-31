@@ -1,4 +1,7 @@
 GithubStarChart::Application.routes.draw do
+  get "star_charts/index"
+
+  root 'star_charts#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
