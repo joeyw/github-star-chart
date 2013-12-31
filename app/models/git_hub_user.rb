@@ -14,6 +14,15 @@ class GitHubUser
       JSON.parse(user, :symbolize_names => true)
     end
 
+    def fetch_followingers(login)
+      octokit.following login
+    end
+
+    def fetch_user_and_followingers(login)
+      [fetch(login)].concat fetch_followingers(login).
+        map { |u| fetch(u.login) }
+    end
+
     private
 
     def octokit

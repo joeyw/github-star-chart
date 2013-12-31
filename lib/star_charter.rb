@@ -20,6 +20,13 @@ class StarCharter
       result
     end
 
+    def shared_starred(target, *users)
+      starred = combine_starred(*users)
+      starred.select { |repo|
+        starred[repo][:stargazers].include?(target) &&
+        starred[repo][:stargazers].length > 1
+      }
+    end
   end
 end
 

@@ -1,13 +1,8 @@
 class StarChartsController < ApplicationController
   def index
     target = 'joeyw'
-    @users = [GitHubUser.fetch(target)]
-    @users.concat Octokit.following(target).map { |u| GitHubUser.fetch(u.login) }
-    @starred = StarCharter.combine_starred(*@users)
-    @shared_starred = @starred.select { |starred|
-      @starred[starred][:stargazers].include?(target) &&
-        @starred[starred][:stargazers].length > 1
-    }.sort
-
+    users = GitHubUser.fetch_user_and_followingers(target)
+    @starred = StarCharter.combine_starred(*users)
+    @shared_starred = StarCharter.shared_starred(target, *users).sort
   end
 end
