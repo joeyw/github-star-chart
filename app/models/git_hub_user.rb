@@ -23,6 +23,15 @@ class GitHubUser
         map { |u| fetch(u.login) }
     end
 
+    def top_starred_languages(login)
+      user = fetch(login)
+      user[:starred].group_by { |repo| repo[:language] }.
+        map { |lang| { (lang[0] || 'Undefined') => lang[1].length } }.
+        sort_by { |lang| lang[lang.keys.first] }.
+        reverse[0..2].
+        collect { |lang| lang.keys.first }
+    end
+
     private
 
     def octokit
