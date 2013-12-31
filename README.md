@@ -29,4 +29,5 @@ The secret token for the rails app can be set by exporting
 `GITHUB_STAR_CHART_SECRET_KEY_BASE`. You can use `rake secret` to
 generate a secure secret key.
 
-![screenshot](Screen_Shot_2013-12-30_at_6.23.25_PM.png)
+![screenshot](screenshot.png)
+
