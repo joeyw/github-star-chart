@@ -33,16 +33,15 @@ class GitHubUser
     end
 
     # For lack of brain function:
-    #
-    # Get the top languages starred for a user
-    # Get their followees
-    # Get the starred repos of a followee who has similar top starred repos
     def magic(login)
-      top_starred_languages(login)
+      languages_we_care_about = top_starred_languages(login)
       followees_top_starred_languages = {}
+
       fetch_followingers(login).each do |followee|
-        followees_top_starred_languages[followee[:login]] = top_starred_languages(followee[:login])
+        langs = top_starred_languages(followee[:login]).select { |lang| languages_we_care_about.include? lang }
+        followees_top_starred_languages[followee[:login]] = langs
       end
+
       followees_top_starred_languages.keys.each do |login|
         starred = fetch(login)[:starred]
         followees_top_starred_languages[login].map! do |lang|
@@ -52,6 +51,7 @@ class GitHubUser
           }
         end
       end
+
       followees_top_starred_languages
     end
 
